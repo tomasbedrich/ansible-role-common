@@ -1,0 +1,10 @@
+---
+date_timezone: Europe/London
+locales:
+  - en_US.UTF-8
+common_packages:
+  - htop
+  - iotop
+  - vim
+  - rsync
+  - unzip

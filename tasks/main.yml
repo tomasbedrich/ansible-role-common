@@ -1,0 +1,25 @@
+---
+- name: set timezone
+  timezone: name="{{ date_timezone }}"
+
+- name: generate locales
+  locale_gen: name="{{ item }}" state=present
+  with_items: "{{ locales }}"
+
+- name: install system pre-dependencies
+  apt: pkg="{{ item }}" state=installed
+  with_items:
+    - apt-transport-https
+
+- name: get Ondrej Sury GPG key
+  get_url: url=https://packages.sury.org/php/apt.gpg dest=/etc/apt/trusted.gpg.d/php.gpg
+
+- name: add Ondrej Sury repo
+  apt_repository: repo="deb https://packages.sury.org/php {{ ansible_distribution_release }} main"
+
+- name: update package index
+  apt: update_cache=yes
+
+- name: install system dependencies
+  apt: pkg="{{ item }}" state=installed
+  with_items: "{{ common_packages }}"

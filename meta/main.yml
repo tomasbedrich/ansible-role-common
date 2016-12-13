@@ -1,0 +1,20 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Tomáš Bedřich
+  description: Common setup tasks (locale, repositories, ...)
+  company: tbedrich.cz
+
+  license: MIT
+  min_ansible_version: 2.2
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+
+  galaxy_tags: []
